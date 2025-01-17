@@ -9,7 +9,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full flex py-4 px-24 gap-1 sticky">
+    <div className="w-full flex py-4 px-24 gap-1">
       {/* Header Content */}
       <div className="w-[60%] flex justify-start items-center">
         <div className="font-bold text-4xl flex gap-2">

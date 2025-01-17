@@ -20,6 +20,19 @@ const CreateEvent = () => {
     console.log("Form Data Submitted:", formData);
     // Add your submission logic here
   };
+  const fieldStyle = {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "gray", // Default border color
+      },
+      "&:hover fieldset": {
+        borderColor: "purple", // Border color on hover
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "purple", // Border color when focused
+      },
+    },
+  };
   return (
     <div className="w-full px-28 pt-10">
       <div className="flex flex-col justify-start items-center">
@@ -32,7 +45,9 @@ const CreateEvent = () => {
             onChange={handleChange}
             fullWidth
             required
+            sx={fieldStyle}
           />
+
           <TextField
             label="Venue"
             name="venue"
@@ -40,6 +55,7 @@ const CreateEvent = () => {
             onChange={handleChange}
             fullWidth
             required
+            sx={fieldStyle}
           />
           <TextField
             label="Date"
@@ -50,6 +66,7 @@ const CreateEvent = () => {
             fullWidth
             required
             InputLabelProps={{ shrink: true }}
+            sx={fieldStyle}
           />
 
           <div className="flex w-full gap-2">
@@ -59,6 +76,7 @@ const CreateEvent = () => {
               value={formData.start_time}
               onChange={handleChange}
               className="w-full"
+              sx={fieldStyle}
             ></TextField>
             <TextField
               label="End-Time"
@@ -66,6 +84,7 @@ const CreateEvent = () => {
               value={formData.end_time}
               onChange={handleChange}
               className="w-full"
+              sx={fieldStyle}
             ></TextField>
           </div>
 
@@ -78,6 +97,7 @@ const CreateEvent = () => {
             onChange={handleChange}
             multiline
             rows={8}
+            sx={fieldStyle}
           ></TextField>
 
           <Button
