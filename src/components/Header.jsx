@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { IoMdMenu } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -12,7 +14,10 @@ const Header = () => {
     <div className="w-full flex py-4 px-24 gap-1">
       {/* Header Content */}
       <div className="w-[60%] flex justify-start items-center">
-        <div className="font-bold text-4xl flex gap-2">
+        <div
+          className="font-bold text-4xl flex gap-2 hover:cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <div className="font-black">Event</div>
           <div className="text-purple-400">Hive</div>
         </div>
@@ -21,7 +26,10 @@ const Header = () => {
         <div className="font-bold text-black hover:text-purple-600 hover:cursor-pointer">
           Clubs
         </div>
-        <div className="font-bold text-black hover:text-purple-600 hover:cursor-pointer">
+        <div
+          onClick={() => navigate("/event")}
+          className="font-bold text-black hover:text-purple-600 hover:cursor-pointer"
+        >
           Events
         </div>
         <div className="font-bold text-black hover:text-purple-600 hover:cursor-pointer">
