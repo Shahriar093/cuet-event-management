@@ -1,6 +1,7 @@
 import React from "react";
 import ClubCard from "./ClubCard";
 import { FaArrowRight } from "react-icons/fa";
+import EventCard from "./EventCard";
 
 const Hero = () => {
   const clubs = [
@@ -59,28 +60,42 @@ const Hero = () => {
         </div>
       </div>
       <div className="text-4xl font-bold p-8">
-        <h1 className="text-purple-500 border-black border-b-1 shadow">
+        <h1 className="text-purple-500 border-black border-b-1 shadow mb-8">
           Our Clubs
-        </h1>
-        <div className="w-full px-10 py-10 flex flex-wrap ">
-          <div className=" bg-gray-100 flex flex-wrap justify-center gap-6 p-6">
-            {clubs.map((club, index) => (
-              <ClubCard
-                key={index}
-                name={club.name}
-                image={club.image}
-                tagline={club.tagline}
-              />
-            ))}
-          </div>
-          <div className="w-full flex justify-end items-center text-gray-700 font-medium text-[1.5rem]">
-            <div className="flex items-center cursor-pointer hover:underline">
-              See more <FaArrowRight />{" "}
+          <div className="w-full px-10 py-10 flex flex-wrap ">
+            <div className=" bg-gray-100 flex flex-wrap justify-center gap-6 p-6">
+              {clubs.map((club, index) => (
+                <ClubCard
+                  key={index}
+                  name={club.name}
+                  image={club.image}
+                  tagline={club.tagline}
+                />
+              ))}
+            </div>
+            <div className="w-full flex justify-end items-center text-gray-700 font-medium text-[1.5rem]">
+              <div className="flex items-center cursor-pointer hover:underline">
+                See more <FaArrowRight />{" "}
+              </div>
             </div>
           </div>
-        </div>
-        <h1 className="text-purple-500 border-black border-b-1 shadow">
+        </h1>
+        <h1 className="text-purple-500 border-black border-b-1 shadow mt-8">
           Upcoming Events
+          <div className="w-full px-10 py-10 flex flex-wrap ">
+            <div className=" bg-gray-100 flex flex-wrap justify-center gap-6 p-6">
+              {Array(6)
+                .fill(0)
+                .map((_, i) => (
+                  <EventCard />
+                ))}
+            </div>
+            <div className="w-full flex justify-end items-center text-gray-700 font-medium text-[1.5rem]">
+              <div className="flex items-center cursor-pointer hover:underline">
+                See more <FaArrowRight />{" "}
+              </div>
+            </div>
+          </div>
         </h1>
       </div>
     </div>

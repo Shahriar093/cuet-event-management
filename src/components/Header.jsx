@@ -18,18 +18,18 @@ const Header = () => {
         </div>
       </div>
       <div className="w-[40%] flex justify-between items-center transition-all">
-        <div className="font-bold text-black hover:text-gray-600 hover:cursor-pointer">
+        <div className="font-bold text-black hover:text-purple-600 hover:cursor-pointer">
           Clubs
         </div>
-        <div className="font-bold text-black hover:text-gray-600 hover:cursor-pointer">
+        <div className="font-bold text-black hover:text-purple-600 hover:cursor-pointer">
           Events
         </div>
-        <div className="font-bold text-black hover:text-gray-600 hover:cursor-pointer">
+        <div className="font-bold text-black hover:text-purple-600 hover:cursor-pointer">
           DSW
         </div>
         {/* Menu Button */}
         <button
-          className=" bg-gray-200 p-1 rounded-md flex items-center justify-center"
+          className=" bg-gray-200 p-1 rounded-md flex items-center justify-center hover:text-purple-600 hover:cursor-pointer"
           onClick={toggleSidebar}
         >
           <span className="material-icons">
