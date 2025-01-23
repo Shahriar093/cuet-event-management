@@ -2,11 +2,11 @@ import React from "react";
 import EventCard from "./EventCard";
 import { FaArrowRight } from "react-icons/fa";
 
-const UpcomingEvents = () => {
+const PastEvents = () => {
   return (
     <div>
       <h1 className="text-purple-500 border-black border-b-1 shadow mt-8">
-        Upcoming Events
+        Past Events
         <div className="w-full px-10 py-10 flex flex-wrap ">
           <div className=" bg-gray-100 flex flex-wrap justify-center gap-6 p-6">
             {Array(8)
@@ -26,4 +26,4 @@ const UpcomingEvents = () => {
   );
 };
 
-export default UpcomingEvents;
+export default PastEvents;

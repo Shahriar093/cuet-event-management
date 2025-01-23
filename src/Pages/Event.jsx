@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import UpcomingEvents from "../components/UpcomingEvents";
+import PastEvents from "../components/PastEvents";
 
 const Event = () => {
   return (
@@ -60,6 +61,7 @@ const Event = () => {
       </div>
       <div className="text-4xl font-bold p-8">
         <UpcomingEvents />
+        <PastEvents />
       </div>
     </div>
   );

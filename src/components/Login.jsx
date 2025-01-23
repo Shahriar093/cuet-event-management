@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     studentID: "",
     password: "",
@@ -34,7 +36,10 @@ const Login = () => {
           <p className="mb-8">Please log in to access your account.</p>
           <div className="mt-4 text-center">
             <p className="text-lg mb-4">Apply for club membership</p>
-            <button className="px-6 py-3 bg-purple-700 hover:bg-gray-800 rounded-md text-white">
+            <button
+              onClick={() => navigate("/ClubSignup")}
+              className="px-6 py-3 bg-purple-700 hover:bg-gray-800 rounded-md text-white"
+            >
               Sign Up
             </button>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import ClubCard from "./ClubCard";
 import { FaArrowRight } from "react-icons/fa";
 import EventCard from "./EventCard";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const clubs = [
@@ -42,6 +43,7 @@ const Hero = () => {
       tagline: "Strategize, play, and win.",
     },
   ];
+  const navigate = useNavigate();
   return (
     <div className="w-full p-10">
       <img
@@ -51,9 +53,9 @@ const Hero = () => {
         className="bg-contain mx-auto"
       />
       <div className="">
-        <div className="w-full flex flex-col justify-center items-center p-4">
-          <p className="text-2xl font-semibold">Welcome to</p>
-          <p className="text-6xl font-bold">
+        <div className="w-full flex flex-col justify-center items-center p-4 ">
+          <p className="text-5xl font-semibold ">Welcome to</p>
+          <p className="text-6xl font-bold ">
             Clubs Event Portal - Event{" "}
             <span className="text-purple-400">Hive</span> of CUET
           </p>
@@ -91,7 +93,10 @@ const Hero = () => {
                 ))}
             </div>
             <div className="w-full flex justify-end items-center text-gray-700 font-medium text-[1.5rem]">
-              <div className="flex items-center cursor-pointer hover:underline">
+              <div
+                onClick={() => navigate("/event")}
+                className="flex items-center cursor-pointer hover:underline"
+              >
                 See more <FaArrowRight />{" "}
               </div>
             </div>
