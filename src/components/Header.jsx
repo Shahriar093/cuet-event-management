@@ -29,7 +29,10 @@ const Header = () => {
         >
           Home
         </div>
-        <div className="font-medium text-gray-800 hover:text-purple-600 hover:cursor-pointer transition-colors">
+        <div
+          onClick={() => navigate("/clubs")}
+          className="font-medium text-gray-800 hover:text-purple-600 hover:cursor-pointer transition-colors"
+        >
           Clubs
         </div>
         <div
@@ -70,13 +73,13 @@ const Header = () => {
           <ul className="mt-6 flex flex-col gap-6">
             <li
               className="text-gray-700 text-lg font-semibold cursor-pointer hover:text-purple-600 transition-all"
-              onClick={toggleSidebar}
+              onClick={() => navigate("/dswlogin")}
             >
               Login As DSW
             </li>
             <li
               className="text-gray-700 text-lg font-semibold cursor-pointer hover:text-purple-600 transition-all"
-              onClick={()=> navigate('/ClubLogin')}
+              onClick={() => navigate("/ClubLogin")}
             >
               Login as Club Admin
             </li>
