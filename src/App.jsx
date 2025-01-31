@@ -8,6 +8,7 @@ import Clubs from "./Pages/Clubs";
 import ClubAdminDashboard from "./Pages/ClubAdminDash";
 import CreateEvent from "./components/CreateEvent";
 import ApplyEvent from "./Pages/ApplyEvent";
+import ErrorPage from "./Pages/Error";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/clubs" element={<Clubs />} />
           <Route path="/admindash" element={<ClubAdminDashboard />} />
           <Route path="/applyevent" element={<ApplyEvent />} />
+          <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </Router>
     </>

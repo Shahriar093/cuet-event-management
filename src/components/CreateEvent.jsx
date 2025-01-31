@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
+
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -20,100 +20,104 @@ const CreateEvent = () => {
     console.log("Form Data Submitted:", formData);
     // Add your submission logic here
   };
-  const fieldStyle = {
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "gray", // Default border color
-      },
-      "&:hover fieldset": {
-        borderColor: "purple", // Border color on hover
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "purple", // Border color when focused
-      },
-    },
-  };
+
   return (
-    <div className="w-full px-28 pt-10">
-      <div className="flex flex-col justify-start items-center">
-        <h1 className="text-4xl font-bold text-black">Create Event</h1>
-        <div className="m-4 flex flex-col justify-center items-center gap-4">
-          <TextField
-            label="Title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            fullWidth
-            required
-            sx={fieldStyle}
-          />
-
-          <TextField
-            label="Venue"
-            name="venue"
-            value={formData.venue}
-            onChange={handleChange}
-            fullWidth
-            required
-            sx={fieldStyle}
-          />
-          <TextField
-            label="Date"
-            name="date"
-            type="date"
-            value={formData.date}
-            onChange={handleChange}
-            fullWidth
-            required
-            InputLabelProps={{ shrink: true }}
-            sx={fieldStyle}
-          />
-
-          <div className="flex w-full gap-2">
-            <TextField
-              label="Start-Time"
-              name="start_time"
-              value={formData.start_time}
+    <div className="bg-gradient-to-b from-purple-50 to-white min-h-screen flex justify-center items-center m-4">
+      <div className="w-full max-w-2xl bg-white shadow-2xl rounded-xl p-8">
+        <h1 className="text-3xl font-bold text-purple-700 text-center mb-8">
+          Create Event
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Title
+            </label>
+            <input
+              type="text"
+              name="title"
+              placeholder="Event Title"
+              value={formData.title}
               onChange={handleChange}
-              className="w-full"
-              sx={fieldStyle}
-            ></TextField>
-            <TextField
-              label="End-Time"
-              name="end_time"
-              value={formData.end_time}
-              onChange={handleChange}
-              className="w-full"
-              sx={fieldStyle}
-            ></TextField>
+              required
+              className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+            />
           </div>
-
-          <h1 className="text-2xl font-bold text-black">Event Description</h1>
-          <TextField
-            label="Description"
-            name="event_description"
-            fullWidth
-            value={formData.event_description}
-            onChange={handleChange}
-            multiline
-            rows={8}
-            sx={fieldStyle}
-          ></TextField>
-
-          <Button
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Venue
+            </label>
+            <input
+              type="text"
+              name="venue"
+              placeholder="Event Venue"
+              value={formData.venue}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Date
+            </label>
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+            />
+          </div>
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">
+                Start Time
+              </label>
+              <input
+                type="time"
+                name="start_time"
+                value={formData.start_time}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">
+                End Time
+              </label>
+              <input
+                type="time"
+                name="end_time"
+                value={formData.end_time}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Event Description
+            </label>
+            <textarea
+              name="event_description"
+              placeholder="Describe your event..."
+              value={formData.event_description}
+              onChange={handleChange}
+              rows="5"
+              required
+              className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+            ></textarea>
+          </div>
+          <button
             type="submit"
-            variant="contained"
-            size="large"
-            sx={{
-              alignSelf: "center",
-              mt: 2,
-              backgroundColor: "purple",
-              opacity: "0.7",
-            }}
+            className="w-full bg-purple-600 text-white py-3 rounded-md text-lg font-medium hover:bg-purple-700 transition"
           >
-            Submit
-          </Button>
-        </div>
+            Submit Event
+          </button>
+        </form>
       </div>
     </div>
   );

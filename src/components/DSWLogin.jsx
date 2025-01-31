@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DSWLogin = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,6 +18,12 @@ const DSWLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (formData.email == "roman@roman.roman" && formData.password == "roman") {
+      navigate("/admindash");
+    } else {
+      navigate("/error");
+    }
     console.log("Login Data:", formData);
   };
 

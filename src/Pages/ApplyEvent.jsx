@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CreateEvent from "../components/CreateEvent";
 
-const ApplyEvent = () => {
+const Apply = () => {
   return (
     <div className="w-full bg-gray-100 min-h-screen overflow-hidden">
       <div className="w-full flex justify-center items-center border-black border-b-1 shadow">
@@ -20,4 +20,4 @@ const ApplyEvent = () => {
   );
 };
 
-export default ApplyEvent;
+export default Apply;
