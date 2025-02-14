@@ -19,7 +19,7 @@ const DSWLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.email == "roman@roman.roman" && formData.password == "roman") {
+    if (formData.email == "admin@gmail.com" && formData.password == "123") {
       navigate("/admindash");
     } else {
       navigate("/error");

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,7 @@ const CreateEvent = () => {
     start_time: "",
     end_time: "",
     event_description: "",
+    img: "", // New field for Poster Link
   });
 
   const handleChange = (e) => {
@@ -15,10 +18,26 @@ const CreateEvent = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    // Add your submission logic here
+    try {
+      const response = await axios.post(
+        "http://localhost:2000/events/create",
+        formData
+      );
+      console.log("Event created successfully:", response.data);
+      navigate("/clubadmindash");
+      // Optionally, reset form or display a success message to the user
+    } catch (error) {
+      console.error(
+        "Error creating event:",
+        error.response ? error.response.data : error.message
+      );
+      // Optionally, display an error message to the user
+    }
   };
 
   return (
@@ -39,6 +58,7 @@ const CreateEvent = () => {
               value={formData.title}
               onChange={handleChange}
               required
+              autoComplete="off"
               className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
             />
           </div>
@@ -53,6 +73,7 @@ const CreateEvent = () => {
               value={formData.venue}
               onChange={handleChange}
               required
+              autoComplete="off"
               className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
             />
           </div>
@@ -66,6 +87,7 @@ const CreateEvent = () => {
               value={formData.date}
               onChange={handleChange}
               required
+              autoComplete="off"
               className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
             />
           </div>
@@ -80,6 +102,7 @@ const CreateEvent = () => {
                 value={formData.start_time}
                 onChange={handleChange}
                 required
+                autoComplete="off"
                 className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
               />
             </div>
@@ -93,6 +116,7 @@ const CreateEvent = () => {
                 value={formData.end_time}
                 onChange={handleChange}
                 required
+                autoComplete="off"
                 className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
               />
             </div>
@@ -108,8 +132,24 @@ const CreateEvent = () => {
               onChange={handleChange}
               rows="5"
               required
+              autoComplete="off"
               className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
             ></textarea>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Poster Link
+            </label>
+            <input
+              type="url"
+              name="img"
+              placeholder="Enter the poster image URL"
+              value={formData.img}
+              onChange={handleChange}
+              autoComplete="off"
+              required // Add the required attribute
+              className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+            />
           </div>
           <button
             type="submit"

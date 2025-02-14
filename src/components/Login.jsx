@@ -18,6 +18,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.studentID == "123" || formData.password == "123") {
+      navigate("/clubadmindash");
+    }
     console.log(formData);
   };
 
