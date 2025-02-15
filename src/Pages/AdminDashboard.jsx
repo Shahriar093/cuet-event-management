@@ -17,6 +17,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import UpcomingEvents from "../components/events/UpcomingEvents";
 import PendingEvents from "../components/events/PendingEvents";
 import RejectedEvents from "../components/events/RejectedEvents";
+import { useNavigate } from "react-router-dom";
 
 // Mock data for charts
 const data = [
@@ -223,6 +224,8 @@ export default function AdminDashboard() {
         return null;
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="flex min-h-screen bg-gray-100">
