@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader"; // Adjust the path to your Loader component
 
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
@@ -11,18 +12,33 @@ const CreateEvent = () => {
     end_time: "",
     event_description: "",
     img: "", // New field for Poster Link
+    club: "", // New field for selecting a club
   });
+
+  const [clubs, setClubs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchClubs = async () => {
+      try {
+        const response = await axios.get("http://localhost:2000/allclubs");
+        setClubs(response.data);
+      } catch (error) {
+        console.error("Error fetching clubs:", error);
+      }
+    };
+    fetchClubs();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+    setLoading(true);
     try {
       const response = await axios.post(
         "http://localhost:2000/events/create",
@@ -30,13 +46,13 @@ const CreateEvent = () => {
       );
       console.log("Event created successfully:", response.data);
       navigate("/clubadmindash");
-      // Optionally, reset form or display a success message to the user
     } catch (error) {
       console.error(
         "Error creating event:",
         error.response ? error.response.data : error.message
       );
-      // Optionally, display an error message to the user
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,6 +63,27 @@ const CreateEvent = () => {
           Create Event
         </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Club
+            </label>
+            <select
+              name="club"
+              value={formData.club}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
+            >
+              <option value="" disabled>
+                Select your club
+              </option>
+              {clubs.map((club) => (
+                <option key={club._id} value={club.name}>
+                  {club.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Title
@@ -146,16 +183,17 @@ const CreateEvent = () => {
               placeholder="Enter the poster image URL"
               value={formData.img}
               onChange={handleChange}
+              required
               autoComplete="off"
-              required // Add the required attribute
               className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500 transition"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-purple-600 text-white py-3 rounded-md text-lg font-medium hover:bg-purple-700 transition"
+            disabled={loading}
+            className="w-full bg-purple-600 text-white py-3 rounded-md text-lg font-medium hover:bg-purple-700 transition disabled:bg-purple-300"
           >
-            Submit Event
+            {loading ? <Loader /> : "Submit Event"}
           </button>
         </form>
       </div>
